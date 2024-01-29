@@ -11,8 +11,6 @@ const Nav = () => {
   const [providers, setProviders] = useState(null);
   const [toogleDropDown, setToogleDropDown] = useState(false);
 
-  console.log("sesss", useSession());
-
   useEffect(() => {
     const setUpProviders = async () => {
       const response = await getProviders();
@@ -57,7 +55,6 @@ const Nav = () => {
           <>
             {providers &&
               Object.values(providers).map((provider) => {
-                console.log("provider", provider);
                 return (
                   <button
                     key={provider.name}
