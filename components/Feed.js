@@ -24,6 +24,13 @@ const Feed = () => {
     setSearchText(e.target.value);
   };
 
+  useEffect(() => {
+    const filteredPosts = allPost.filter((post) =>
+      post.tag.toLowerCase().includes(searchText.toLowerCase())
+    );
+    setAllPost(filteredPosts);
+  }, [searchText]);
+
   const fetchPosts = async () => {
     const response = await fetch("api/prompt");
     const data = await response.json();
@@ -39,7 +46,7 @@ const Feed = () => {
       <form className="relative w-full flex-center">
         <input
           type="text"
-          placeholder="Search for a tag or a username"
+          placeholder="Search for a tag"
           value={searchText}
           onChange={handleSearchChange}
           required
